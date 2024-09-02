@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo tests"
+  },
+  
+  "type": "module"
+}
