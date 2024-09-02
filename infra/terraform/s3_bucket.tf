@@ -26,14 +26,3 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
   }
 }
 
-resource "aws_dynamodb_table" "terraform_locks-schedule" {
-  name         = "terraform-locks-schedule"
-  billing_mode = "PAY_PER_REQUEST"
-
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-
-  hash_key = "LockID"
-}
