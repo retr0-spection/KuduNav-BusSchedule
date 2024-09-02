@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "campus-schedule-bucket"  # Replace with a unique bucket name
+  bucket = "campus-schedule-bucket-new"  # Replace with a unique bucket name
   acl    = "private"
 
   versioning {
