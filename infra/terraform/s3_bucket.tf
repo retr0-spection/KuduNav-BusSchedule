@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "campus-schedule-bucket-new"  # Replace with a unique bucket name
+  bucket = "campus-schedule"  # Replace with a unique bucket name
   acl    = "private"
 
   versioning {
@@ -8,10 +8,6 @@ resource "aws_s3_bucket" "terraform_state" {
 
   lifecycle {
     prevent_destroy = true
-    ignore_changes = [
-      acl,
-      tags,
-    ]
   }
 
   tags = {
@@ -28,4 +24,16 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
       sse_algorithm = "AES256"
     }
   }
+}
+
+resource "aws_dynamodb_table" "terraform_locks-schedule" {
+  name         = "terraform-locks-schedule"
+  billing_mode = "PAY_PER_REQUEST"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+
+  hash_key = "LockID"
 }
