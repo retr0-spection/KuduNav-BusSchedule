@@ -55,10 +55,6 @@ jobs:
       run: terraform refresh
       working-directory: infra/terraform  # Path to Terraform files
 
-    - name: Terraform s3
-      working-directory: infra/terraform  # Path to Terraform files
-      run: terraform import aws_s3_bucket.terraform_state campus-schedule
-
     - name: Terraform Destroy Existing Instance
       working-directory: infra/terraform
       run: terraform destroy -auto-approve -target=aws_instance.app_server
