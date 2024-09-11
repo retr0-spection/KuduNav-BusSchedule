@@ -30,25 +30,31 @@ resource "aws_instance" "app_server" {
               sudo yum install -y git
 
               # Clone your private repository using PAT
-              git clone https://nothandonk:${var.github_token}@github.com/nothandonk/KuduNav-BusSchedule.git /home/ec2-user/app
+              git clone https://retr0-spection:${var.github_token}@github.com/retr0-spection/campus-transport-server.git /home/ec2-user/app
 
               # Change to the app directory
               cd /home/ec2-user/app
 
               # Build Docker image from Dockerfile
-              sudo docker build -t campus-schedule-server .
+              sudo docker build -t campus-transport-server .
 
               # Run the Docker container with auto-restart
-              sudo docker run -d --restart unless-stopped -p 80:3000 campus-schedule-server
+              sudo docker run -d --restart unless-stopped -p 80:3000 campus-transport-server
               EOF
 
   tags = {
-    Name = "KuduNav-BusSchedule"
+    Name = "ScheduleServer"
   }
 
   lifecycle {
     create_before_destroy = true  # Create new instance before destroying old one
   }
+}
+
+# Associate an existing Elastic IP with the instance
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.app_server.id
+  allocation_id = "eipalloc-0b73dad1fb13a8409"  # Use your actual Elastic IP allocation ID
 }
 
 output "instance_ip" {
