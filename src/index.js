@@ -10,6 +10,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Define a simple route
+
+app.get('/', (req, res) => {
+    res.send({'message':'hello world'})
+});
+
 app.get('/docs', (req, res) => {
     res.sendFile(__dirname + '/pages/index.html')
 });
