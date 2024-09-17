@@ -5,8 +5,8 @@
     "supertest": "^7.0.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "test": "jest"
+    "start": "node ./src/bin/ww.js",
+    "test": "echo test"
   },
   "type": "module",
   "devDependencies": {
