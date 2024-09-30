@@ -128,7 +128,7 @@ let events = [
     {eventId: "a121", starttime: "2024-09-12T10:00", endtime: "2024-09-12T01:00"}
 ]
 // Get the live schedule for all routes
-router.get("/schedule", (req, res) => {
+router.get("/", (req, res) => {
     if (schedule.length > 0) {
         res.status(200).json(schedule);
     } else {
@@ -143,7 +143,7 @@ router.get("/routes", (req, res) => {
         res.status(404).json({ message: "No schedules available" });
     }
 });
-
+//not needed just add routes.routename
 router.get("/routesnames", (req, res) => {
     // Assuming 'routes' is an array of route objects with a property 'routeName'
     const routesnames = routes.map(route => route.routeName);
