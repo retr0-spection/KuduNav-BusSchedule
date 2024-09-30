@@ -1,6 +1,8 @@
 import express from "express";
 import Router from './routes/busschedule.js';
 import connectDb from "../config/db.js";
+import subRouter from "./routes/subscriptionRoute.js";
+import routesRouter from "./routes/routesRoute.js";
 
 const app = express();
 
@@ -29,7 +31,8 @@ app.use(function (req, res, next) {
   });
 
 app.use(Router)
-
+app.use("/api/subscriptions", subRouter)
+app.use("/api/Route", routesRouter)
 
 
 
