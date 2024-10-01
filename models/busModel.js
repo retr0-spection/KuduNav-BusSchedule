@@ -5,5 +5,5 @@ const busSchema = new mongoose.Schema({
     capacity: {type: Number, required: true}
 })
 
-const busModel = mongoose.models.bus || mongoose.model("bus",busSchema)
+const busModel = mongoose.models.bus || mongoose.model("buses",busSchema)
 export default busModel;

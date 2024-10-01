@@ -1,18 +1,18 @@
-import busModel from "../models/busModel.js";
+import stopModel from "../models/stopsModel.js";
 
 // add bus
 
-const addbus = async (req,res)=> {
+const addstop = async (req,res)=> {
 
-    const bus = new busModel({
+    const stop = new stopModel({
         
     })
 
     try {
-        await bus.save();
+        await stop.save();
         res.json({
             success: true,
-            message: "bus Added"
+            message: "stop Added"
         })
     } catch (error) {
         console.log(error)
@@ -24,9 +24,9 @@ const addbus = async (req,res)=> {
 }
 
 // all products list
-const listbuses = async (req,res)=>{
+const liststops = async (req,res)=>{
     try {
-        const buses = await busModel.find({});
+        const stops = await stopModel.find({});
         res.json({success:true, data: buses})
     } catch (error) {
         console.log(error)
@@ -35,10 +35,10 @@ const listbuses = async (req,res)=>{
 }
 
 // remove routes
-const removebuses = async (req,res) => {
+const removestops = async (req,res) => {
     try {
-        const bus = await busModel.findById(req.body.id);
-        await busModel.findByIdAndDelete(req.body.id)
+        const stop = await stopModel.findById(req.body.id);
+        await stopModel.findByIdAndDelete(req.body.id)
         res.json({success:true, message:"bus removed"})
     } catch (error) {
         console.log(error)
@@ -46,4 +46,4 @@ const removebuses = async (req,res) => {
     }
 }
 
-export {addbus,listbuses,removebuses};
+export {addstop,liststops,removestops};

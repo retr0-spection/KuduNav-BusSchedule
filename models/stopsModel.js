@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const coordinatesSchema = new Schema({
+const coordinatesSchema = new mongoose.Schema({
     latitude: {
       type: Number,
       required: true
@@ -18,5 +18,5 @@ const stopsSchema = new mongoose.Schema({
     }
 })
 
-const stopsModel = mongoose.models.bus || mongoose.model("stop",stopsSchema)
+const stopsModel = mongoose.models.bus || mongoose.model("stops",stopsSchema)
 export default stopsModel;
