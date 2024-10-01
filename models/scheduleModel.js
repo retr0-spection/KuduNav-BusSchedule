@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const stopSchema = new Schema({
+const stopSchema = new mongoose.Schema({
     stopId: {type: String,required: true},
     arrivalTime: {type: String,required: true},
     departureTime: {type: String,required: true},
@@ -14,5 +14,5 @@ const scheduleSchema = new mongoose.Schema({
     STATUS: {type: String, default: "On time"},
 })
 
-const scheduleModel = mongoose.models.schedule || mongoose.model("schedule",scheduleSchema)
+const scheduleModel = mongoose.models.schedule || mongoose.model("schedules",scheduleSchema)
 export default scheduleModel;

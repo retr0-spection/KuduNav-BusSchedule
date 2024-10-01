@@ -3,6 +3,9 @@ import Router from './routes/busschedule.js';
 import connectDb from "../config/db.js";
 import subRouter from "./routes/subscriptionRoute.js";
 import routesRouter from "./routes/routesRoute.js";
+import busRouter from "./routes/busRoute.js";
+import stopRouter from "./routes/stopRoute.js";
+import scheduleRouter from "./routes/scheduleRoute.js";
 
 const app = express();
 
@@ -30,10 +33,12 @@ app.use(function (req, res, next) {
     }
   });
 
-app.use(Router)
-app.use("/api/subscriptions", subRouter)
-app.use("/api/Route", routesRouter)
-
+//app.use(Router)
+app.use(subRouter)
+app.use(routesRouter)
+app.use(busRouter)
+app.use(stopRouter)
+app.use(scheduleRouter)
 
 
 export default app

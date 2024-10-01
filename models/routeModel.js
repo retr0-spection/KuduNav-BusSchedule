@@ -6,6 +6,6 @@ const routesSchema = new mongoose.Schema({
     Details:{type:String, require:true}
 })
 
-const routeModel = mongoose.models.route || mongoose.model("Route",routesSchema);
+const routeModel = mongoose.models.route || mongoose.model("routes",routesSchema);
 
 export default routeModel;
