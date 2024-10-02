@@ -57,7 +57,7 @@ const liveschedule = async (req, res) => {
         );
 
         // Respond with the filtered schedules
-        res.json({ success: true, data: availableSchedules });
+        res.json(availableSchedules);
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: "Error fetching live schedules" });
@@ -112,7 +112,7 @@ const livescheduleByRoute = async (req, res) => {
         );
 
         // Respond with the filtered schedules
-        res.json({ success: true, data: availableSchedules });
+        res.json(availableSchedules );
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: "Error fetching live schedules for the specified RouteID" });

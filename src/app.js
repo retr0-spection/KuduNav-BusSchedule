@@ -34,11 +34,11 @@ app.use(function (req, res, next) {
   });
 
 app.use(Router)
-// app.use(subRouter)
-// app.use(routesRouter)
+app.use(subRouter)
+app.use(routesRouter)
 // app.use(busRouter)
 // app.use(stopRouter)
-// app.use(scheduleRouter)
+app.use(scheduleRouter)
 
 
 export default app

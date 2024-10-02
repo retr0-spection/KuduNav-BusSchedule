@@ -4,8 +4,8 @@ import { listschedule, liveschedule, livescheduleByRoute} from '../../controller
 
 const scheduleRouter = express.Router();
 
-scheduleRouter.get("/",listschedule)
-scheduleRouter.get("/liveschedule",liveschedule)
+//scheduleRouter.get("/",listschedule)
+scheduleRouter.get("/live-schedule",liveschedule)
 scheduleRouter.get("/liveschedulebyroute",livescheduleByRoute)
 
 export default scheduleRouter;

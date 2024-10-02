@@ -1,45 +1,46 @@
 //import userModel from "../../models/userModel.js";
 //import routeModel from "../models/routeModel.js";
-import SubscribeModel from "../models/subscribedModel.js";
+import subscribeModel from "../models/subscribedModel.js";
 
 // Import the models
 //const SubscribeModel = require('../../models/subscribedModel.js');
 //const UserModel = require('../models/userModel.js');  // Assuming this exists
 
 // Create a function to add a subscription
-// const subscribeUserToRoute = async (req, res) => {
-//   try {
-//     const { userID, routeID } = req.body;
+const subscribeUserToRoute = async (req, res) => {
+  const { userID, RouteID } = req.body;
 
-//     // Check if both userID and routeID are provided
-//     if (!userID || !routeID) {
-//       return res.status(400).json({ message: 'userID and routeID are required' });
-//     }
+    // Check if both fields are provided
+    if (!userID || !RouteID) {
+        return res.status(400).json({ message: 'UserID and RouteID are required' });
+    }
 
-//     // Verify if the user exists
-//     const user = await userModel.findByPk(userID);
-//     if (!user) {
-//       return res.status(404).json({ message: 'User not found' });
-//     }
+    try {
+        // Create a new subscription
+        const newSubscription = new subscribeModel({
+            userID,
+            RouteID,
+        });
 
-//     // Add the new subscription
-//     const newSubscription = await SubscribeModel.create({ userID, routeID });
+        // Save the subscription to the database
+        await newSubscription.save();
 
-//     // Respond with the created subscription
-//     res.status(201).json(newSubscription);
-//   } catch (error) {
-//     console.error('Error subscribing user:', error);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// };
+        // Respond with success
+        res.status(201).json({ message: 'Subscription added successfully', subscription: newSubscription });
+    } catch (error) {
+        // Handle any errors
+        res.status(500).json({ message: 'Error adding subscription', error: error.message });
+    }
+}
+
 const listsubs = async (req,res)=>{
   try {
-      const subs = await SubscribeModel.find({});
-      res.json({success:true, data: subs})
+      const subs = await SubscribeModel.find({}, 'RouteID userID -_id');
+      res.json(subs)
   } catch (error) {
       console.log(error)
       res.json({success:false, message:"Error"})
   }
 }
 // Export the controller function
-export {listsubs};
+export {listsubs,subscribeUserToRoute};

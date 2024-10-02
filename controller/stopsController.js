@@ -23,11 +23,11 @@ const addstop = async (req,res)=> {
     }
 }
 
-// all products list
+// all stops list
 const liststops = async (req,res)=>{
     try {
-        const stops = await stopModel.find({});
-        res.json({success:true, data: buses})
+        const stops = await stopModel.find({},'stopName');
+        res.json(stops)
     } catch (error) {
         console.log(error)
         res.json({success:false, message:"Error"})
