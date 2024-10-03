@@ -25,8 +25,8 @@ let schedule = [
           {
             stopId: "S001",
             stopName: "AMIC",
-            arrivalTime: "2024-09-12T08:20",
-            departureTime: "2024-09-12T08:25",
+            arrivalTime: "08:20",
+            departureTime: "08:25",
             coordinates: {
               latitude: -26.1924,
               longitude: 28.0306
@@ -35,8 +35,8 @@ let schedule = [
           {
             stopId: "S002",
             stopName: "knockando",
-            arrivalTime: "2024-09-12T08:30",
-            departureTime: "2024-09-12T08:35",
+            arrivalTime: "08:30",
+            departureTime: "08:35",
             coordinates: {
               latitude: -26.1932,
               longitude: 28.0320
@@ -56,8 +56,8 @@ let schedule = [
           {
             stopId: "S001",
             stopName: "knockando",
-            arrivalTime: "2024-09-12T08:00",
-            departureTime: "2024-09-12T08:05",
+            arrivalTime: "08:00",
+            departureTime: "08:05",
             coordinates: {
               latitude: -26.1924,
               longitude: 28.0306
@@ -66,8 +66,8 @@ let schedule = [
           {
             stopId: "S002",
             stopName: "AMIC",
-            arrivalTime: "2024-09-12T08:15",
-            departureTime: "2024-09-12T08:20",
+            arrivalTime: "08:15",
+            departureTime: "08:20",
             coordinates: {
               latitude: -26.1932,
               longitude: 28.0320
@@ -87,8 +87,8 @@ let schedule = [
           {
             stopId: "S001",
             stopName: "wits Junction",
-            arrivalTime: "2024-09-12T09:00",
-            departureTime: "2024-09-12T09:05",
+            arrivalTime: "09:00",
+            departureTime: "09:05",
             coordinates: {
               latitude: -26.1924,
               longitude: 28.0306
@@ -97,8 +97,8 @@ let schedule = [
           {
             stopId: "S002",
             stopName: "education campus",
-            arrivalTime: "2024-09-12T10:00",
-            departureTime: "2024-09-12T10:05",
+            arrivalTime: "10:00",
+            departureTime: "10:05",
             coordinates: {
               latitude: -26.1932,
               longitude: 28.0320

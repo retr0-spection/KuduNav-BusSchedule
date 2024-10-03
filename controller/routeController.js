@@ -8,7 +8,7 @@ const addroute = async (req,res)=> {
 
     const route = new routeModel({
         RouteName: req.body.RouteName,
-        Details: req.body.Details
+       
     })
 
     try {
@@ -38,14 +38,24 @@ const listroutes = async (req,res)=>{
 }
 
 // List all RouteNames
+// const listRouteNames = async (req, res) => {
+//     try {
+//         const routes = await routeModel.find({}, 'RouteName');
+//         const routeNames = routes.map(route => route.RouteName); // Extract RouteName from each route
+//         res.json({routeNames });
+//     } catch (error) {
+//         console.log(error);
+//         res.json({ success: false, message: "Error" });
+//     }
+// };
 const listRouteNames = async (req, res) => {
     try {
-        const routes = await routeModel.find({});
-        const routeNames = routes.map(route => route.RouteName); // Extract RouteName from each route
-        res.json({ success: true, data: routeNames });
+        const routes = await routeModel.find({}, 'RouteName'); // Only get RouteName field
+        const routeNames = routes.map(route => route.RouteName);
+        res.json(routeNames); // Return only the array of route names
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" });
+        res.status(500).json({ success: false, message: "Error" });
     }
 };
 // remove routes
