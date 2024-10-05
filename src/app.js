@@ -6,6 +6,7 @@ import routesRouter from "./routes/routesRoute.js";
 import busRouter from "./routes/busRoute.js";
 import stopRouter from "./routes/stopRoute.js";
 import scheduleRouter from "./routes/scheduleRoute.js";
+import notifyRouter from "./routes/notifyRoute.js";
 
 const app = express();
 
@@ -39,6 +40,6 @@ app.use(routesRouter)
 // app.use(busRouter)
 // app.use(stopRouter)
 app.use(scheduleRouter)
-
+app.use(notifyRouter)
 
 export default app
