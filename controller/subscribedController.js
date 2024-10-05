@@ -44,3 +44,10 @@ const listsubs = async (req,res)=>{
 }
 // Export the controller function
 export {listsubs,subscribeUserToRoute};
+
+
+//subcriptions (userId only) where route id is 0
+// []
+//get schedule for the route, departure time
+
+// {"Bus Alert", "Bus leave WEC in 10 minutes", [], departure time - 10}
