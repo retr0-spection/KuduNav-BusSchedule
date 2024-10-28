@@ -6,7 +6,7 @@ import moment from 'moment';
 
 const notifyRouter = express.Router();
 // Function to check and notify
-const notifyUsersForUpcomingDepartures = async () => {
+export const notifyUsersForUpcomingDepartures = async () => {
     try {
         const currentTime = new Date();
         const notificationTime = moment(currentTime).add(10, 'minutes').toDate();
@@ -25,7 +25,7 @@ const notifyUsersForUpcomingDepartures = async () => {
             });
         }
     } catch (err) {
-        console.error('Error fetching upcoming departures:', err);
+        console.log('Error fetching upcoming departures:', err);
     }
 };
 
