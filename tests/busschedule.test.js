@@ -7,7 +7,6 @@ import {listRouteNames,listdetails} from "../controller/routeController.js"
 
 //import scheduleModel from "../models/scheduleModel.js"
 //import {liveschedule, livescheduleByRoute} from '../../controller/scheduleController.js'
-
 // Mock the routeModel.find() method
 jest.mock("../models/routeModel.js"); // Update with actual path
 
@@ -16,6 +15,13 @@ jest.mock("../models/routeModel.js"); // Update with actual path
 app.get('/routeNames', listRouteNames);
 app.get('/details', listdetails);
 
+beforeAll(async () => {
+  // Ensure MongoDB is connected before running tests
+  await mongoose.connect(process.env.MONGO_URI, {
+    // useNewUrlParser: true, // Remove if using MongoDB driver 4.0+
+    // useUnifiedTopology: true, // Remove if using MongoDB driver 4.0+
+  });
+});
 // describe("GET /", () => {
 //   it("should return the index.html file", async () => {
 //     const res = await request(app).get("/");

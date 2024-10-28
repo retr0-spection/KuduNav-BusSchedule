@@ -1,5 +1,6 @@
 import app from "../app.js";
 import Docs from "../routes/docs.js"
+import '../cron/cron.js'
 
 
 app.use('/docs', Docs)

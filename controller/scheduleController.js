@@ -38,6 +38,7 @@ const liveschedule = async (req, res) => {
 
         // Helper function to convert time strings (HH:MM) to minutes
         const timeToMinutes = (time) => {
+            if (!time || !time.includes(':')) return null;
             const [hours, minutes] = time.split(':').map(Number);
             return hours * 60 + minutes;
         };
