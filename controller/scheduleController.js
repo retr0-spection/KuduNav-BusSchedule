@@ -19,7 +19,7 @@ const liveschedule = async (req, res) => {
 
         // Fetch all routes and stops to map names
         const routes = await routeModel.find({}, 'RouteID RouteName'); // Fetch RouteID and RouteName
-        const stops = await stopsModel.find({}, 'stopId stopName'); // Fetch stopId and stopName
+        const stops = await stopsModel.find({}, 'stopID stopName'); // Fetch stopId and stopName
 
         // Create maps for quick lookup
         const routeMap = routes.reduce((map, route) => {
@@ -28,7 +28,7 @@ const liveschedule = async (req, res) => {
         }, {});
 
         const stopMap = stops.reduce((map, stop) => {
-            map[stop.stopId] = stop.stopName;
+            map[stop.stopID] = stop.stopName;
             return map;
         }, {});
 
@@ -80,11 +80,11 @@ const livescheduleByRoute = async (req, res) => {
 
         // Fetch the specific route and stops to map names
         const route = await routeModel.findOne({ RouteID: routeID }, 'RouteID RouteName');
-        const stops = await stopsModel.find({}, 'stopId stopName'); // Fetch all stops (or optimize based on need)
+        const stops = await stopsModel.find({}, 'stopID stopName'); // Fetch all stops (or optimize based on need)
 
         // Create a stop map for quick lookup
         const stopMap = stops.reduce((map, stop) => {
-            map[stop.stopId] = stop.stopName;
+            map[stop.stopID] = stop.stopName;
             return map;
         }, {});
 
