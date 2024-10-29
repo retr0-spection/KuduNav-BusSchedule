@@ -58,6 +58,14 @@ const listRouteNames = async (req, res) => {
         res.status(500).json({ success: false, message: "Error" });
     }
 };
+const getAllRoutes = async (req, res) => {
+    try {
+      const routes = await routeModel.find({}, 'RouteID RouteName Details'); // Retrieve only specific fields
+      res.status(200).json(routes);
+    } catch (error) {
+      res.status(500).json({ success: false, message: "Error" });
+    }
+  };
 
 const listdetails = async (req, res) => {
     try {
@@ -82,4 +90,4 @@ const removeroutes = async (req,res) => {
 }
 
 
-export {addroute,listroutes,listRouteNames,removeroutes,listdetails};
+export {addroute,listroutes,listRouteNames,removeroutes,listdetails,getAllRoutes};
