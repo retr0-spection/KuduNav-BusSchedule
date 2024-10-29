@@ -1,13 +1,10 @@
-import express from "express"
-import {listsubs, subscribeUserToRoute} from '../../controller/subscribedController.js'
-
+import express from "express";
+import { listsubs, subscribeUserToRoute, removeSubscription } from '../../controller/subscribedController.js';
 
 const subRouter = express.Router();
 
-
-subRouter.post("/addsub",subscribeUserToRoute)
-subRouter.get("/listsub",listsubs)
-
-
+subRouter.post("/addsub", subscribeUserToRoute);
+subRouter.delete("/removesub", removeSubscription);
+subRouter.get("/listsub", listsubs);
 
 export default subRouter;
