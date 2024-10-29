@@ -57,19 +57,19 @@ import subscribeModel from "../models/subscribedModel.js";
 
 // Add Subscription
 const subscribeUserToRoute = async (req, res) => {
-  const { userID, routeID } = req.body;
+  const { userID, RouteID } = req.body;
 
-  if (!userID || !routeID) {
+  if (!userID || !RouteID) {
     return res.status(400).json({ message: 'userID and routeID are required' });
   }
 
   try {
-    const existingSubscription = await subscribeModel.findOne({ userID, routeID });
+    const existingSubscription = await subscribeModel.findOne({ userID, RouteID });
     if (existingSubscription) {
       return res.status(409).json({ message: 'User is already subscribed to this route' });
     }
 
-    const newSubscription = new subscribeModel({ userID, routeID });
+    const newSubscription = new subscribeModel({ userID, RouteID });
     await newSubscription.save();
 
     res.status(201).json({ message: 'Subscription added successfully', subscription: newSubscription });
@@ -80,14 +80,14 @@ const subscribeUserToRoute = async (req, res) => {
 
 // Remove Subscription
 const removeSubscription = async (req, res) => {
-  const { userID, routeID } = req.body;
+  const { userID, RouteID } = req.body;
 
-  if (!userID || !routeID) {
+  if (!userID || !RouteID) {
     return res.status(400).json({ message: 'userID and routeID are required' });
   }
 
   try {
-    const deletedSubscription = await subscribeModel.findOneAndDelete({ userID, routeID });
+    const deletedSubscription = await subscribeModel.findOneAndDelete({ userID, RouteID });
     if (!deletedSubscription) {
       return res.status(404).json({ message: 'Subscription not found' });
     }
@@ -101,7 +101,7 @@ const removeSubscription = async (req, res) => {
 // List Subscriptions
 const listsubs = async (req, res) => {
   try {
-    const subs = await subscribeModel.find({}, 'routeID userID -_id');
+    const subs = await subscribeModel.find({}, 'RouteID userID -_id');
     res.json(subs);
   } catch (error) {
     console.error(error);
