@@ -6,7 +6,7 @@
 // //const SubscribeModel = require('../../models/subscribedModel.js');
 // //const UserModel = require('../models/userModel.js');  // Assuming this exists
 
-// // Create a function to add a subscription
+// // Create a function to add a subscription better option
 // const subscribeUserToRoute = async (req, res) => {
 //   const { userID, RouteID } = req.body;
 
